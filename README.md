@@ -169,7 +169,7 @@ The solution utilizes a star schema design with fact and dimension tables to ens
 - Table: Scan diagnostics (Scan ID, date, scanner, assets scanned, plugin count)
 - Bar chart: Assets past SLA by scanner
 
-**Value:** Detects blind spots — ensures scanning is consistent, plugins are firing as expected, and failures are investigated.
+**Value:** Detects blind spots - ensures scanning is consistent, plugins are firing as expected, and failures are investigated.
 
 ## Key Features
 
@@ -188,3 +188,4 @@ This suite demonstrates:
 - **Focus Areas:** Data modeling, DAX calculations, and dashboard design in a cybersecurity context
 
 This project serves as a strong showcase of Power BI capabilities with clear alignment to executive, operational, and risk stakeholders in cybersecurity environments.
+
