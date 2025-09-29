@@ -2,9 +2,21 @@
 
 A comprehensive Power BI reporting suite designed for vulnerability management, featuring executive-level risk posture views and operational drilldowns for remediation teams.
 
+## Portfolio Project
+
+This repository showcases a comprehensive Power BI vulnerability management solution created as a portfolio demonstration. The dashboards are built from mock scan data and serve to illustrate advanced Power BI capabilities, data modeling techniques, and cybersecurity reporting best practices.
+
+**Note:** Some charts may appear inconsistent or unusual due to the nature of the mock data used for demonstration purposes. As I continue to refine data generation methods and explore new analytical approaches, I will be adding additional dashboards and improving existing visualizations.
+
 ## Overview
 
 This project demonstrates a full Power BI reporting solution built from mock scan data spanning one year of weekly scans. The data is modeled using a star schema for scalability and clean analytics, providing both high-level executive insights and detailed operational views for security teams.
+
+## Data Model
+
+![Power BI Data Model](images/model-view.png)
+
+The solution utilizes a star schema design with fact and dimension tables to ensure optimal performance and clean analytics. This data model structure enables efficient querying and provides the foundation for all dashboard visualizations and calculations.
 
 ## Dashboard Portfolio
 
