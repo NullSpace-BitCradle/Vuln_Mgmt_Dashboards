@@ -188,4 +188,3 @@ This suite demonstrates:
 - **Focus Areas:** Data modeling, DAX calculations, and dashboard design in a cybersecurity context
 
 This project serves as a strong showcase of Power BI capabilities with clear alignment to executive, operational, and risk stakeholders in cybersecurity environments.
-
