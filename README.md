@@ -1,49 +1,32 @@
-# 📊 Vulnerability Management Dashboards
+# Vulnerability Management Dashboards
 
-A comprehensive Power BI reporting suite designed for vulnerability management, featuring executive-level risk posture views and operational drilldowns for remediation teams.
-
-## Portfolio Project
-
-This repository showcases a comprehensive Power BI vulnerability management solution created as a portfolio demonstration. The dashboards are built from mock scan data and serve to illustrate advanced Power BI capabilities, data modeling techniques, and cybersecurity reporting best practices.
-
-**Note:** Some charts may appear inconsistent or unusual due to the nature of the mock data used for demonstration purposes. As I continue to refine data generation methods and explore new analytical approaches, I will be adding additional dashboards and improving existing visualizations.
-
-## Overview
-
-This project demonstrates a full Power BI reporting solution built from mock scan data spanning one year of weekly scans. The data is modeled using a star schema for scalability and clean analytics, providing both high-level executive insights and detailed operational views for security teams.
+A Power BI reporting suite for vulnerability management, featuring executive-level risk posture views and operational drilldowns for remediation teams. Built from mock scan data spanning one year of weekly scans to demonstrate data modeling, DAX calculations, and cybersecurity reporting in Power BI.
 
 ## Data Model
 
 ![Power BI Data Model](images/model-view.png)
 
-The solution utilizes a star schema design with fact and dimension tables to ensure optimal performance and clean analytics. This data model structure enables efficient querying and provides the foundation for all dashboard visualizations and calculations.
+Star schema design with fact and dimension tables for scalable analytics. This structure enables efficient querying and provides the foundation for all dashboard visualizations and calculations.
 
-## Dashboard Portfolio
+## Dashboards
 
 ### 1. Executive Overview
 
 ![Executive Overview Dashboard](images/executive-overview.png)
 
-**Audience:** CISOs, Senior Management  
+**Audience:** CISOs, Senior Management
 **Purpose:** High-level snapshot of organizational exposure
 
-#### Executive Metrics
+**Metrics:** Total open vulnerabilities, Critical %, Exploitable %, Average CVSS (open), Assets with critical vulns
 
-- **Total Open Vulnerabilities:** All currently unremediated findings
-- **Critical %:** Proportion of vulnerabilities at critical severity
-- **Exploitable %:** Percentage of vulnerabilities marked as actively exploitable
-- **Average CVSS (Open):** Mean severity score for open vulnerabilities
-- **Assets with Critical Vulns:** Number of assets impacted by at least one critical vulnerability
-
-#### Executive Visualizations
-
+**Visualizations:**
 - Line chart: Backlog vs new vs closed vulnerabilities over time
 - Donut chart: Severity distribution
 - Treemap: Open vulnerabilities by business unit
-- Heatmap matrix: Business unit × severity
+- Heatmap matrix: Business unit x severity
 - Top products: Most affected technologies
 
-**Value:** Executives quickly see exposure, risk concentration, and whether remediation efforts are reducing backlog.
+Executives quickly see exposure, risk concentration, and whether remediation efforts are reducing backlog.
 
 ---
 
@@ -51,24 +34,18 @@ The solution utilizes a star schema design with fact and dimension tables to ens
 
 ![Asset Risk Dashboard](images/asset-risk-view.png)
 
-**Audience:** Infrastructure / Remediation Teams  
+**Audience:** Infrastructure / Remediation Teams
 **Purpose:** Identify assets carrying the most risk
 
-#### Asset Risk Metrics
+**Metrics:** Assets with open vulnerabilities, Average risk score per asset (CVSS-weighted), Assets with critical vulnerabilities, Assets past SLA
 
-- Assets with Open Vulnerabilities
-- Average Risk Score per Asset (CVSS-weighted)
-- Assets with Critical Vulnerabilities
-- Assets Past SLA
-
-#### Asset Risk Visualizations
-
+**Visualizations:**
 - Bar chart: Top 10 risky assets
-- Scatter/bubble plot: Risk landscape (Avg CVSS × vulnerability count, bubble size = risk score, color = business unit)
-- Matrix: Assets × severity
+- Scatter/bubble plot: Risk landscape (Avg CVSS x vulnerability count, bubble size = risk score, color = business unit)
+- Matrix: Assets x severity
 - Slicers: Filter by business unit, OS, asset type
 
-**Value:** Operations teams identify "hotspots" — assets with both high severity and many vulnerabilities.
+Operations teams identify hotspots -- assets with both high severity and many vulnerabilities.
 
 ---
 
@@ -76,115 +53,87 @@ The solution utilizes a star schema design with fact and dimension tables to ens
 
 ![CVE Explorer Dashboard](images/cve-explorer.png)
 
-**Audience:** Security Analysts, Incident Responders  
+**Audience:** Security Analysts, Incident Responders
 **Purpose:** Investigate specific CVEs across the estate
 
-#### CVE Analysis Metrics
+**Metrics:** Total open instances, Assets affected, Exploitable %, Average CVSS
 
-- Total Open Instances of the CVE
-- Assets Affected
-- Exploitable %
-- Average CVSS (Open)
-
-#### CVE Analysis Visualizations
-
+**Visualizations:**
 - Bar chart: Affected business units
 - Table: Assets impacted (hostname, business unit, OS, severity, status, scan date)
 - Metadata panel: CVE description, vector, solution, references
 - Slicers: CVE, severity, exploitable flag, product
 
-**Value:** Analysts can pivot to a single CVE (e.g., Log4Shell) and instantly see scope, affected assets, and remediation guidance.
+Analysts can pivot to a single CVE (e.g., Log4Shell) and instantly see scope, affected assets, and remediation guidance.
 
 ---
 
-### 4. Time & Trends
+### 4. Time and Trends
 
 ![Time & Trends Dashboard](images/time-trends.png)
 
-**Audience:** Executives and Governance Teams  
+**Audience:** Executives and Governance Teams
 **Purpose:** Long-term risk posture and remediation velocity analysis
 
-#### Trend Analysis Metrics
+**Metrics:** New vulnerabilities (this month), Closed vulnerabilities (this month), Net change (backlog growth or reduction), Average remediation time (days)
 
-- New Vulnerabilities (This Month)
-- Closed Vulnerabilities (This Month)
-- Net Change (backlog growth or reduction)
-- Average Remediation Time (Days)
-
-#### Trend Analysis Visualizations
-
+**Visualizations:**
 - Line chart: Backlog vs new vs closed trend
 - Stacked area chart: Open vulnerabilities by severity over time
 - Line chart: Average CVSS of new vulnerabilities per month
 
-**Value:** Leaders see whether security posture is improving or deteriorating over time.
+Leaders see whether security posture is improving or deteriorating over time.
 
 ---
 
-### 5. SLA & Remediation Tracking
+### 5. SLA and Remediation Tracking
 
 ![SLA Tracking Dashboard](images/sla-tracking.png)
 
-**Audience:** Risk/Compliance, Operations Managers  
+**Audience:** Risk/Compliance, Operations Managers
 **Purpose:** Track remediation performance vs SLA targets
 
-#### SLA Tracking Metrics
+**Metrics:** SLA compliance % (within defined thresholds per severity), Critical/High past SLA counts, Average remediation time, Vulnerabilities closed in last 30 days
 
-- SLA Compliance % (within defined thresholds per severity)
-- Critical Past SLA count
-- High Past SLA count
-- Average Remediation Time
-- Vulnerabilities Closed in Last 30 Days
-
-#### SLA Tracking Visualizations
-
+**Visualizations:**
 - Line chart: SLA compliance % trend
 - Stacked bar chart: Within SLA vs past SLA, by severity
-- Matrix: Business unit × SLA compliance
-- Histogram: Distribution of remediation days (0–30, 31–60, 61–90, 90+)
+- Matrix: Business unit x SLA compliance
+- Histogram: Distribution of remediation days (0-30, 31-60, 61-90, 90+)
 
-**Value:** Accountability dashboard highlighting where SLA targets are being missed, broken down by severity and business unit.
+Accountability dashboard highlighting where SLA targets are being missed, broken down by severity and business unit.
 
 ---
 
-### 6. Scan & Plugin Diagnostics
+### 6. Scan and Plugin Diagnostics
 
 ![Scan Diagnostics Dashboard](images/scan-diagnostics.png)
 
-**Audience:** Vulnerability Management Engineers  
+**Audience:** Vulnerability Management Engineers
 **Purpose:** Validate scanner health and plugin effectiveness
 
-#### Diagnostic Metrics
+**Metrics:** Total scans, Unique assets scanned, Average scan coverage %, Top plugin (by findings)
 
-- Total Scans
-- Unique Assets Scanned
-- Average Scan Coverage %
-- Top Plugin (by findings)
-
-#### Diagnostic Visualizations
-
+**Visualizations:**
 - Line chart: Assets scanned per week
 - Bar chart: Top plugins by findings
 - Donut chart: Scan status (success/failure)
-- Table: Scan diagnostics (Scan ID, date, scanner, assets scanned, plugin count)
+- Table: Scan diagnostics (scan ID, date, scanner, assets scanned, plugin count)
 - Bar chart: Assets past SLA by scanner
 
-**Value:** Detects blind spots - ensures scanning is consistent, plugins are firing as expected, and failures are investigated.
+Detects blind spots -- ensures scanning is consistent, plugins are firing as expected, and failures are investigated.
 
-## Key Features
+## Technical Details
 
-This suite demonstrates:
-
-- **Executive Storytelling:** KPIs and trends that highlight risk posture
-- **Operational Drilldown:** Asset and CVE views for day-to-day remediation
-- **Risk Accountability:** SLA compliance and remediation metrics
-- **Quality Assurance:** Scanner and plugin health monitoring
-
-## Technical Implementation
-
-- **Data Model:** Star schema for scalability and clean analytics
 - **Platform:** Microsoft Power BI
-- **Data Source:** Mock scan data spanning one year of weekly scans
-- **Focus Areas:** Data modeling, DAX calculations, and dashboard design in a cybersecurity context
+- **Data Model:** Star schema (fact and dimension tables)
+- **Data Source:** Mock scan data, one year of weekly scans
+- **Techniques:** DAX measures, calculated columns, role-level security patterns, bookmark navigation
 
-This project serves as a strong showcase of Power BI capabilities with clear alignment to executive, operational, and risk stakeholders in cybersecurity environments.
+## Note
+
+Dashboards are built from generated mock data for demonstration purposes. Some visualizations may reflect artifacts of the synthetic data rather than real-world patterns.
+
+## License
+
+MIT License.
