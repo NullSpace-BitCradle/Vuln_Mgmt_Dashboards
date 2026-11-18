@@ -1,12 +1,14 @@
 # Vulnerability Management Dashboards
 
-A Power BI reporting suite for vulnerability management, featuring executive-level risk posture views and operational drilldowns for remediation teams. Built from mock scan data spanning one year of weekly scans to demonstrate data modeling, DAX calculations, and cybersecurity reporting in Power BI.
+Screenshots of a Power BI report for vulnerability management: executive-level risk posture views and operational drilldowns for remediation teams. The report was built on mock scan data spanning one year of weekly scans.
+
+**These are illustrative mockups.** The Power BI file (.pbix or .pbit), the DAX measures and the mock data are not in this repository, so nothing here can be opened, rebuilt or checked. Several screenshots also show measures that return wrong values. See [Known issues in the screenshots](#known-issues-in-the-screenshots) before you take any number or chart from these images as a model.
 
 ## Data Model
 
 ![Power BI Data Model](images/model-view.png)
 
-Star schema design with fact and dimension tables for scalable analytics. This structure enables efficient querying and provides the foundation for all dashboard visualizations and calculations.
+The model has dimension tables (DimAssets, DimNetwork, DimScan, DimTime, DimVulnerabilities), a fact table (FactVulnerabilities) and a Measures table. A wide RawData table also sits in the model, and DimNetwork shows no relationship line. It is star-shaped, not a clean star schema.
 
 ## Dashboards
 
@@ -126,14 +128,24 @@ Detects blind spots -- ensures scanning is consistent, plugins are firing as exp
 ## Technical Details
 
 - **Platform:** Microsoft Power BI
-- **Data Model:** Star schema (fact and dimension tables)
-- **Data Source:** Mock scan data, one year of weekly scans
-- **Techniques:** DAX measures, calculated columns, role-level security patterns, bookmark navigation
+- **Data Model:** Star-shaped (dimension tables, one fact table and a wide raw table; see Data Model above)
+- **Data Source:** Mock scan data, one year of weekly scans (not included)
+- **Techniques:** DAX measures and calculated columns appear in the model screenshot. Role-level security and bookmark navigation are not shown anywhere in this repository, so they cannot be verified
 
 ## Note
 
-Dashboards are built from generated mock data for demonstration purposes. Some visualizations may reflect artifacts of the synthetic data rather than real-world patterns.
+Dashboards are built from generated mock data for demonstration purposes. Some visualizations may reflect artifacts of the synthetic data rather than real-world patterns. The CVE Explorer screenshot, for example, lists CVE-2025 IDs on scans dated September 2024, and every CVE has the same description and CVSS vector. The scan page shows five different scanners covering one estate.
+
+## Known issues in the screenshots
+
+These are errors in the screenshots themselves, not artifacts of the mock data. They cannot be fixed without the Power BI file, and the images have not been edited.
+
+- **Scan and Plugin Diagnostics:** Total Scans shows 414K, and the Total Scans by Scanner donut shows 414K (20%) for each of five scanners. A measure that returns the grand total for every scanner is ignoring filter context. 414K also looks like a count of finding rows, not scans. Assets Past SLA by Scanner shows 10K for every scanner for the same reason. The Top Plugin ID tile shows a plugin name.
+- **Time and Trends:** Avg CVSS of New Vulns has an axis that runs past 20, but CVSS tops out at 10. The severity chart is horizontal bars of average CVSS and stops at October, not the stacked area chart of open vulnerabilities by severity described above.
+- **SLA and Remediation Tracking:** SLA Compliance % has an axis of 0.0 to 0.2 (a fraction, not a percent) and the trend skips April to August. Critical Past SLA (23K) and High Past SLA (83K) are far above the 6,069 open criticals on the Executive Overview, and the 444,462 total vulnerabilities do not match the 90,627 open there.
+- **Asset Risk View:** The Top 10 Risky Assets chart shows at least 14 hostnames, all with the same bar length (clipped at the axis maximum of 20). Assets with Open Vulns and Assets Past SLA are both 9,716, so every asset is past SLA.
+- **Executive Overview:** The totals add up (22,845 + 39,689 + 22,024 + 6,069 = 90,627) and no errors were found there.
 
 ## License
 
-MIT License.
+MIT License. See the [LICENSE](LICENSE) file.
